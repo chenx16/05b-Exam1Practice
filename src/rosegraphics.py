@@ -561,7 +561,6 @@ class _Shape(object, metaclass=__FreezeClass__):
             rose_canvas = rose_canvas.initial_canvas
         rose_canvas._undraw(self)
 
-
 class _ShapeWithOutline(object):
     """
     A Shape that has an interior (which can be filled with a color)

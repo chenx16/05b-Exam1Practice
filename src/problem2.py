@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Xinlai Chen.
+"""  # done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -102,8 +102,19 @@ def problem2a(circle, rectangle, window):
       :type rectangle: rg.Rectangle
       :type window:    rg.RoseWindow
     """
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    line=rg.Line(rectangle.get_upper_right_corner(),rectangle.get_lower_left_corner())
+    line.arrow='last'
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    circle.fill_color=rectangle.outline_color
+    window.render()
+
+
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -173,8 +184,20 @@ def problem2b(rect, n, delta, win):
       :type delta:  int
       :type win:    rg.RoseWindow
     """
+    p1x = rect.get_upper_left_corner().x
+    p1y = rect.get_upper_left_corner().y
+    p2x=rect.get_lower_right_corner().x
+    p2y=rect.get_lower_right_corner().y
+    for k in range(n-1):
+        rectangle=rg.Rectangle(
+            rg.Point(p1x-delta*(k+1),p1y-delta*(k+1))
+            ,rg.Point(p2x+delta*(k+1),p2y+delta*(k+1))
+                               )
+        rectangle.attach_to(win)
+    rect.attach_to(win)
+    win.render()
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
