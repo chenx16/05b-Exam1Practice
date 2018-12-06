@@ -38,7 +38,7 @@ def main():
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # done: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # -------------------------------------------------------------------------
@@ -99,7 +99,7 @@ def run_test_problem3a():
     window3.close_on_mouse_click()
 
     # -------------------------------------------------------------------------
-    # TO DO: 2 (continued).
+    # done: 2 (continued).
     # Below this comment (or integrated with one of the above tests,
     # your choice), add 1 more test case of your own choosing.
     # -------------------------------------------------------------------------
@@ -110,10 +110,10 @@ def run_test_problem3a():
 
     # Test 5 (it is on window 4):
     point = rg.Point(40, 60)
-    expected = 218
-    answer = problem3a(window4, point, 50)
+    expected = 36+13+13+13+13+13+13+13+13+13
+    answer = problem3a(window4, point, 15)
     print()
-    print('Test 4 expected:', expected)
+    print('Test 5 expected:', expected)
     print('       actual:  ', answer)
 
     window3.close_on_mouse_click()
@@ -150,9 +150,25 @@ def problem3a(window, point, n):
         :type point:  rg.Point
         :type n:      int
     """
-    
+    x=point.x
+    y=point.y
+    sum=0
+    for k in range(n):
+        line=rg.Line(rg.Point(x+20*k,y+10*k),rg.Point(x+20*k,y+10*k+50))
+        if k <=6:
+            total=1+2*k
+        else:
+            total=13
+        line.thickness = total
+        sum=sum+total
+        line.attach_to(window)
+        window.render()
+    return sum
+
+
+
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -215,6 +231,38 @@ def problem3b(m, point1):
         :type m:      int
         :type point1: rg.Point
     """
+    x=point1.x
+    y=point1.y
+    pa=y+50
+
+    sum=0
+    window=rg.RoseWindow(400,650)
+    for k in range(m):
+        pointa = rg.Point(x, y+k*60)
+        pointb= rg.Point(x,pa+60*k)
+        h=2*k+3
+        line = rg.Line(pointa, pointb)
+        line.attach_to(window)
+        for i in range(h-1):
+            pointa=rg.Point(pointa.x+20,pointa.y+10)
+            pointb=rg.Point(pointb.x+20,pointb.y+10)
+            line=rg.Line(pointa,pointb)
+
+            line.attach_to(window)
+            if 2*i+3<= 13:
+                total = 3 + 2 * i
+            else:
+                total = 13
+            line.thickness = total
+            sum = sum + total
+    sum = sum + m
+
+    window.render()
+    window.continue_on_mouse_click()
+    return  sum
+
+
+
     # -------------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
     #          Tests have been written for you (above).
