@@ -234,7 +234,6 @@ def problem3b(m, point1):
     x=point1.x
     y=point1.y
     pa=y+50
-
     sum=0
     window=rg.RoseWindow(400,650)
     for k in range(m):
